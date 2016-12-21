@@ -1,3 +1,3 @@
-# Google Maps powered by React
+# Simple Google Maps
 
-This is a simple Google Maps implementation using React/Redux.
+Simple Google Maps implemented using React/Redux (work in progress...)
