@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import MarkerReducer from './marker-reducer';
+
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  mapConfig: MarkerReducer
 });
 
 export default rootReducer;
