@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchHostLocation } from '../actions/index';
+import { fetchLocation } from '../actions/index';
 
 class MenuControl extends Component {
 
@@ -12,15 +12,20 @@ class MenuControl extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.getOwnLocation = this.getOwnLocation.bind(this);
   }
 
   onInputChange(e) {
     this.setState({ term: e.target.value });
   }
 
+  getOwnLocation(e) {
+    this.props.fetchLocation();
+  }
+
   onFormSubmit(e) {
     e.preventDefault();
-    this.props.fetchHostLocation(this.getHost(this.state.term));
+    this.props.fetchLocation(this.getHost(this.state.term));
   }
 
   getHost(url) {
@@ -55,11 +60,11 @@ class MenuControl extends Component {
             onChange={ this.onInputChange }></input>
           <button type="submit" className="icon-search"></button>
           <span></span>
-          <button className="icon-location"></button>
         </form>
+        <button className="icon-location" onClick={ this.getOwnLocation }></button>
       </div>
     );
   }
 }
 
-export default connect(null, { fetchHostLocation })(MenuControl);
+export default connect(null, { fetchLocation })(MenuControl);
