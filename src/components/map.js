@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-
 import { INITIAL_MAP_ZOOM, INITIAL_LOCATION } from '../utils/consts';
 
 class Map extends Component {
@@ -37,7 +35,9 @@ class Map extends Component {
       this.marker.setAnimation(google.maps.Animation.DROP);
       this.marker.setPosition(this.props.mapConfig.position);
     } else {
-      alert('Please insert a valid host address');
+      let infoWindow = new google.maps.InfoWindow({ map: this.map});
+      infoWindow.setContent('Error: The Geolocation service failed.');
+      infoWindow.setPosition(this.marker.getPosition());
     }
   }
 
