@@ -8,7 +8,7 @@ const INITIAL_STATE = INITIAL_LOCATION;
 export default function( state = INITIAL_STATE, action ) {
   switch (action.type) {
     case FETCH_HOST_LOCATION:
-      return { ...state, position: { lat: action.payload.data.lat, lng: action.payload.data.lon } };
+      return { ...state, position: { lat: action.payload.lat, lng: action.payload.lng } };
       break;
 
     default:
